@@ -4189,5 +4189,1183 @@
       "mode": "row-based"
     },
     "description": "Remove rows"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "name",
+          "expression": "value",
+          "columnName": "name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "[restaurant Name And/or Location Not Given]",
+                "l": "[restaurant Name And/or Location Not Given]"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "name",
+          "expression": "value",
+          "columnName": "name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Restaurant Name And/or Location Not Given",
+                "l": "Restaurant Name And/or Location Not Given"
+              }
+            },
+            {
+              "v": {
+                "v": "Restaurant Name And/or Location Not Given]",
+                "l": "Restaurant Name And/or Location Not Given]"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/column-addition",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "baseColumnName": "name",
+    "expression": "grel:if(isBlank(value), cells.sponsor_cluster.value, value)",
+    "onError": "set-to-blank",
+    "newColumnName": "restaurant_name",
+    "columnInsertIndex": 2,
+    "description": "Create column restaurant_name at index 2 based on column name using expression grel:if(isBlank(value), cells.sponsor_cluster.value, value)"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "?",
+                "l": "?"
+              }
+            },
+            {
+              "v": {
+                "v": "[restaurant And/or Location Not Given.]",
+                "l": "[restaurant And/or Location Not Given.]"
+              }
+            },
+            {
+              "v": {
+                "v": "[restaurant Name And/or Location Not Given]",
+                "l": "[restaurant Name And/or Location Not Given]"
+              }
+            },
+            {
+              "v": {
+                "v": "[restaurant And/or Location Unknown]",
+                "l": "[restaurant And/or Location Unknown]"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "\\the Manor\\\"\"",
+                "l": "\\the Manor\\\"\""
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value.replace(/[‘’‚‛‹›‚]/,\"\\'\").replace(/[“”«»„]/,\"\\\"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column restaurant_name using expression value.replace(/[‘’‚‛‹›‚]/,\"\\'\").replace(/[“”«»„]/,\"\\\"\")"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "\\the Manor\\\"\"",
+                "l": "\\the Manor\\\"\""
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "grel:cells.location_cluster.value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column restaurant_name using expression grel:cells.location_cluster.value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "sponsor_cluster",
+          "expression": "value",
+          "columnName": "sponsor_cluster",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "\\the Manor\\\"\"",
+                "l": "\\the Manor\\\"\""
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "sponsor",
+    "expression": "grel:cells.location_cluster.value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column sponsor using expression grel:cells.location_cluster.value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "sponsor_cluster",
+          "expression": "value",
+          "columnName": "sponsor_cluster",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "\\the Manor\\\"\"",
+                "l": "\\the Manor\\\"\""
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "sponsor_cluster",
+    "expression": "grel:cells.location_cluster.value",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column sponsor_cluster using expression grel:cells.location_cluster.value"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "grel:if(isBlank(value), cells.location_cluster.value, value)",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column restaurant_name using expression grel:if(isBlank(value), cells.location_cluster.value, value)"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [],
+          "selectBlank": true,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "grel:value.replace(/[\\'\\\"\\,\\;\\\\]/, \"\")",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column restaurant_name using expression grel:value.replace(/[\\'\\\"\\,\\;\\\\]/, \"\")"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "U.S.M.S.",
+          "Usms",
+          "U.S.M.S"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S.M.S."
+      },
+      {
+        "from": [
+          "Louisville & Nashville Railroaad - The Pullman Co.",
+          "Louisville & Nashville Railroaad The Pullman Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Louisville & Nashville Railroaad - The Pullman Co."
+      },
+      {
+        "from": [
+          "Electric Tower Restaurant - Bailey Catering Co.",
+          "Electric Tower Restaurant Bailey Catering Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Electric Tower Restaurant - Bailey Catering Co."
+      },
+      {
+        "from": [
+          "(engineers Club)",
+          "Engineers Club"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Engineers Club"
+      },
+      {
+        "from": [
+          "(club)",
+          "Club"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "(club)"
+      },
+      {
+        "from": [
+          "Cafe Savarin",
+          "Café Savarin"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cafe Savarin"
+      },
+      {
+        "from": [
+          "Cosmopolitan Hotel",
+          "Cosmopolitan... Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cosmopolitan Hotel"
+      },
+      {
+        "from": [
+          "Lehigh Valley Railroad - Dining Car Service",
+          "Lehigh Valley Railroad Dining Car Service"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Lehigh Valley Railroad - Dining Car Service"
+      },
+      {
+        "from": [
+          "Bert Hough & Tony Franker - Pabst Blue Ribbon",
+          "Bert Hough & Tony Franker Pabst Blue Ribbon"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Bert Hough & Tony Franker - Pabst Blue Ribbon"
+      },
+      {
+        "from": [
+          "Southern Pacific Company - Dining Car Service",
+          "Southern Pacific Company Dining Car Service"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Southern Pacific Company - Dining Car Service"
+      },
+      {
+        "from": [
+          "Delmonicos",
+          "Delmonicos."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Delmonicos"
+      },
+      {
+        "from": [
+          "Hofbrau Haus",
+          "Hofbräu Haus"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hofbrau Haus"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "U.S.M.S. New York",
+          "Usms New York"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "U.S.M.S. New York"
+      },
+      {
+        "from": [
+          "Pure Food Cafes - Annex No. 1",
+          "Pure Food Cafes Annex No. 1"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pure Food Cafes - Annex No. 1"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Hotel Claremont",
+          "Claremont Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Claremont"
+      },
+      {
+        "from": [
+          "Champlain Hotel",
+          "Hotel Champlain"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Champlain Hotel"
+      },
+      {
+        "from": [
+          "Hotel Manhattan",
+          "Manhattan Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Manhattan"
+      },
+      {
+        "from": [
+          "Colombo Hotel",
+          "Hotel Colombo"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Colombo Hotel"
+      },
+      {
+        "from": [
+          "Grenoble Hotel",
+          "Hotel Grenoble"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Grenoble Hotel"
+      },
+      {
+        "from": [
+          "Hotel Minot",
+          "Minot Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Minot"
+      },
+      {
+        "from": [
+          "Hotel Marie Antoinette",
+          "Marie Antoinette Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Marie Antoinette"
+      },
+      {
+        "from": [
+          "Imperial Hotel",
+          "Hotel Imperial"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Imperial Hotel"
+      },
+      {
+        "from": [
+          "St. Regis Hotel",
+          "Hotel St. Regis"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St. Regis Hotel"
+      },
+      {
+        "from": [
+          "Hotel Netherland",
+          "Netherland Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Netherland"
+      },
+      {
+        "from": [
+          "Hotel Empire",
+          "Empire Hotel"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Empire"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "A.H. Meyer Rathskeller",
+          "A.H.Meyer Rathskeller"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "A.H. Meyer Rathskeller"
+      },
+      {
+        "from": [
+          "Luchows Pan American Restauant Co.",
+          "Luchows Pan-american Restauant Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Luchows Pan American Restauant Co."
+      },
+      {
+        "from": [
+          "Waldorf Astoria",
+          "Waldorf-astoria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Waldorf Astoria"
+      },
+      {
+        "from": [
+          "State Department Special To The Pand American Congress At The City Of Mexico (pullman Car Service)",
+          "State Department Special To The Pand-american Congress At The City Of Mexico (pullman Car Service)"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "State Department Special To The Pand American Congress At The City Of Mexico (pullman Car Service)"
+      },
+      {
+        "from": [
+          "Flat Iron Restaurant",
+          "Flatiron Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Flat Iron Restaurant"
+      },
+      {
+        "from": [
+          "B&o Blue Line",
+          "B.& O. Blue Line"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "B.& O. Blue Line"
+      },
+      {
+        "from": [
+          "Café Des Beaux Arts",
+          "Café Des Beaux-arts"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Café Des Beaux Arts"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Tadich Grill",
+          "Tadlich Grill"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Tadich Grill"
+      },
+      {
+        "from": [
+          "Luchows Pan American Restauant Co.",
+          "Luchows Pan American Restaurant Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Luchows Pan American Restauant Co."
+      },
+      {
+        "from": [
+          "Wiehl & Widmann",
+          "Wiehl & Widman"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Wiehl & Widmann"
+      },
+      {
+        "from": [
+          "Palace Hotel Restaurant And Ladies Grill Room",
+          "Palace Hotel Restaurat And Ladies Grill Room"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Palace Hotel Restaurant And Ladies Grill Room"
+      },
+      {
+        "from": [
+          "Greenhut-siegel Cooper Co.",
+          "Greehut-siegel Cooper Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Greenhut-siegel Cooper Co."
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "John Doscher Restaurant",
+          "John Doschers Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "John Doscher Restaurant"
+      },
+      {
+        "from": [
+          "Edward F. Langs Ladies And Gents Lunch Room And Restaurant",
+          "Edward F. Langss Ladies And Gents Lunch Room And Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Edward F. Langs Ladies And Gents Lunch Room And Restaurant"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "Unknown",
+                "l": "Unknown"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "St. Denis Hotel",
+          "St. Denis Hotel: Taylors Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "St. Denis Hotel"
+      },
+      {
+        "from": [
+          "Eastern Hotel",
+          "Eastern Hotel Restaurant And Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Eastern Hotel"
+      },
+      {
+        "from": [
+          "M.F.Lyons Dining Room",
+          "M.F. Loyns Dining Rooms"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "M.F.Lyons Dining Room"
+      },
+      {
+        "from": [
+          "Fifth Avenue Hotel",
+          "Fifth Avenue Hotel Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fifth Avenue Hotel"
+      },
+      {
+        "from": [
+          "The Mouquin Restaurant And Wine Co.",
+          "The Mouquin Restaurant & Wine Co"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Mouquin Restaurant And Wine Co."
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "The Waldorf",
+                "l": "The Waldorf"
+              }
+            },
+            {
+              "v": {
+                "v": "Waldorf-astoria: South Gate",
+                "l": "Waldorf-astoria: South Gate"
+              }
+            },
+            {
+              "v": {
+                "v": "Waldorf-astoria: Grand Ball Room",
+                "l": "Waldorf-astoria: Grand Ball Room"
+              }
+            },
+            {
+              "v": {
+                "v": "Waldorf-astoria Hotel",
+                "l": "Waldorf-astoria Hotel"
+              }
+            },
+            {
+              "v": {
+                "v": "The Waldorf Astoria",
+                "l": "The Waldorf Astoria"
+              }
+            },
+            {
+              "v": {
+                "v": "Waldorf Astoria",
+                "l": "Waldorf Astoria"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Waldorf Astoria",
+          "Waldorf-astoria: South Gate",
+          "Waldorf-astoria Hotel",
+          "Waldorf-astoria: Grand Ball Room"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Waldorf Astoria"
+      },
+      {
+        "from": [
+          "The Waldorf Astoria",
+          "The Waldorf"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Waldorf Astoria"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "The Waldorf Astoria",
+                "l": "The Waldorf Astoria"
+              }
+            },
+            {
+              "v": {
+                "v": "Waldorf Astoria",
+                "l": "Waldorf Astoria"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Waldorf Astoria",
+          "The Waldorf Astoria"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Waldorf Astoria"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Northern Steamship Company/great Northern Ry Line.",
+          "Northern Steamship Company/great Orthern Ry. Line"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Northern Steamship Company/great Northern Ry Line."
+      },
+      {
+        "from": [
+          "The Transportation Club",
+          "Transportation Club"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Transportation Club"
+      },
+      {
+        "from": [
+          "The White Turkey",
+          "White Turkey"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The White Turkey"
+      },
+      {
+        "from": [
+          "Flat Iron Resaurant And Cafe",
+          "Flat Iron Restaurant And Cafe"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Flat Iron Restaurant And Cafe"
+      },
+      {
+        "from": [
+          "Cortland",
+          "Cortlandt"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Cortland"
+      },
+      {
+        "from": [
+          "The Cortland",
+          "The Cortlandt"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Cortland"
+      },
+      {
+        "from": [
+          "The Mouquin Restaurant And Wine Co.",
+          "Mouquin Restaurant And Wine Co"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Mouquin Restaurant And Wine Co."
+      },
+      {
+        "from": [
+          "Pennsylvania Lunch",
+          "The Pennsylvania Lunch"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Pennsylvania Lunch"
+      },
+      {
+        "from": [
+          "Broadway Central Hotel",
+          "Broadway Central Hotel New York"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Broadway Central Hotel"
+      },
+      {
+        "from": [
+          "Hotel Beach Plaza",
+          "The Hotel Beach Plaza"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Hotel Beach Plaza"
+      },
+      {
+        "from": [
+          "Great Northern System - Dining Cars",
+          "Great Northern System Dining Car"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Great Northern System - Dining Cars"
+      },
+      {
+        "from": [
+          "New Haven Railroad",
+          "The New Haven Railroad"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "New Haven Railroad"
+      },
+      {
+        "from": [
+          "Fred Harvey",
+          "The Fred Harvey"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Fred Harvey"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "Central Restaurant",
+          "Central Restaurant Co."
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Central Restaurant"
+      },
+      {
+        "from": [
+          "The Ice Terrace",
+          "Ice Terrace"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Ice Terrace"
+      },
+      {
+        "from": [
+          "Westchester Restaurant",
+          "The Westchester Restaurant"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "Westchester Restaurant"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
+  },
+  {
+    "op": "core/mass-edit",
+    "engineConfig": {
+      "facets": [
+        {
+          "type": "list",
+          "name": "date",
+          "expression": "grel:toNumber(value[0,4])>2000",
+          "columnName": "date",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": false,
+                "l": "false"
+              }
+            },
+            {
+              "v": {
+                "v": true,
+                "l": "true"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": true
+        },
+        {
+          "type": "list",
+          "name": "restaurant_name",
+          "expression": "value",
+          "columnName": "restaurant_name",
+          "invert": false,
+          "omitBlank": false,
+          "omitError": false,
+          "selection": [
+            {
+              "v": {
+                "v": "The Cortland",
+                "l": "The Cortland"
+              }
+            },
+            {
+              "v": {
+                "v": "Cortland",
+                "l": "Cortland"
+              }
+            }
+          ],
+          "selectBlank": false,
+          "selectError": false
+        }
+      ],
+      "mode": "row-based"
+    },
+    "columnName": "restaurant_name",
+    "expression": "value",
+    "edits": [
+      {
+        "from": [
+          "The Cortland",
+          "Cortland"
+        ],
+        "fromBlank": false,
+        "fromError": false,
+        "to": "The Cortland"
+      }
+    ],
+    "description": "Mass edit cells in column restaurant_name"
   }
 ]

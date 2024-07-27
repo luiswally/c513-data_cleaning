@@ -1,34 +1,21 @@
 [
   {
-    "op": "core/column-addition",
-    "engineConfig": {
-      "facets": [],
-      "mode": "row-based"
-    },
-    "baseColumnName": "updated_at",
-    "expression": "grel:value[0,4].toNumber()>2013",
-    "onError": "set-to-blank",
-    "newColumnName": "updated_after_2013",
-    "columnInsertIndex": 7,
-    "description": "Create column updated_after_2013 at index 7 based on column updated_at using expression grel:value[0,4].toNumber()>2013"
-  },
-  {
-    "op": "core/text-transform",
+    "op": "core/row-removal",
     "engineConfig": {
       "facets": [
         {
           "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
+          "name": "updated_at",
+          "expression": "grel:toNumber(value[0,4])>=2013",
+          "columnName": "updated_at",
           "invert": false,
           "omitBlank": false,
           "omitError": false,
           "selection": [
             {
               "v": {
-                "v": true,
-                "l": "true"
+                "v": false,
+                "l": "false"
               }
             }
           ],
@@ -36,6 +23,14 @@
           "selectError": false
         }
       ],
+      "mode": "row-based"
+    },
+    "description": "Remove rows"
+  },
+  {
+    "op": "core/text-transform",
+    "engineConfig": {
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "id",
@@ -48,27 +43,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "id",
@@ -81,27 +56,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "id",
@@ -114,27 +69,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "menu_page_id",
@@ -147,27 +82,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "menu_page_id",
@@ -180,27 +95,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "menu_page_id",
@@ -213,27 +108,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "price",
@@ -246,27 +121,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "price",
@@ -279,27 +134,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "price",
@@ -312,27 +147,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "dish_id",
@@ -345,27 +160,7 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
-      "facets": [
-        {
-          "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
-          "invert": false,
-          "omitBlank": false,
-          "omitError": false,
-          "selection": [
-            {
-              "v": {
-                "v": true,
-                "l": "true"
-              }
-            }
-          ],
-          "selectBlank": false,
-          "selectError": false
-        }
-      ],
+      "facets": [],
       "mode": "row-based"
     },
     "columnName": "dish_id",
@@ -378,12 +173,25 @@
   {
     "op": "core/text-transform",
     "engineConfig": {
+      "facets": [],
+      "mode": "row-based"
+    },
+    "columnName": "dish_id",
+    "expression": "value.toNumber()",
+    "onError": "keep-original",
+    "repeat": false,
+    "repeatCount": 10,
+    "description": "Text transform on cells in column dish_id using expression value.toNumber()"
+  },
+  {
+    "op": "core/row-removal",
+    "engineConfig": {
       "facets": [
         {
           "type": "list",
-          "name": "updated_after_2013",
-          "expression": "grel:value==true",
-          "columnName": "updated_after_2013",
+          "name": "price",
+          "expression": "isBlank(value)",
+          "columnName": "price",
           "invert": false,
           "omitBlank": false,
           "omitError": false,
@@ -401,11 +209,6 @@
       ],
       "mode": "row-based"
     },
-    "columnName": "dish_id",
-    "expression": "value.toNumber()",
-    "onError": "keep-original",
-    "repeat": false,
-    "repeatCount": 10,
-    "description": "Text transform on cells in column dish_id using expression value.toNumber()"
+    "description": "Remove rows"
   }
 ]
