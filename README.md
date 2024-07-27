@@ -22,5 +22,10 @@ SOURCE /Users/wally/Databases/clean/MenuPage_clean.sql;
 SOURCE /Users/wally/Databases/clean/MenuItem_clean.sql;
 SOURCE /Users/wally/Databases/clean/Dish_clean.sql;
 
+SOURCE /Users/wally/Databases/raw/Menu.sql;
+SOURCE /Users/wally/Databases/raw/MenuPage.sql;
+SOURCE /Users/wally/Databases/raw/MenuItem.sql;
+SOURCE /Users/wally/Databases/raw/Dish.sql;
+
 SHOW TABLES;
 ```
