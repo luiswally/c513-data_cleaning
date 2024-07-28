@@ -32,7 +32,9 @@ FROM
     LEFT JOIN Dish_raw as Dish ON MenuItem.dish_id = Dish.id
 WHERE
     MenuItem.price > 5 AND
-    MenuItem.price <= 15.00
+    MenuItem.price <= 15.00 # AND
+--    Menu.currency = 'Dollars' # AND # for Qu_a and Qu_b for variant 1 and 2
+--    CAST(SUBSTRING(MenuItem.updated_at, 1, 4) AS UNSIGNED) >= 2013 # for Qu_a and Qu_b for variant 2
 ORDER BY
     restaurant,
     MenuItem.price;
